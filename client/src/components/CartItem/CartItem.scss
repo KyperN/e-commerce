@@ -1,0 +1,30 @@
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid lightgrey;
+  .description-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+      width: 150px;
+      height: 150px;
+    }
+    .description {
+      color: red;
+    }
+  }
+  .quantity-block {
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+    button {
+      margin: 0 15px 0 15px;
+    }
+  }
+  .price-block {
+    margin-right: 200px;
+  }
+}
