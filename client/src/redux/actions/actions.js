@@ -1,5 +1,4 @@
 export const loadItems = (val) => {
-  console.log(val);
   return { type: 'LOAD_ITEMS', payload: val };
 };
 
@@ -12,5 +11,17 @@ export const finishLoad = () => {
 };
 
 export const addToCart = (val) => {
+  val.quantity = 1;
   return { type: 'ADD_TO_CART', payload: val };
+};
+
+export const removeFromCart = (val) => {
+  return { type: 'REMOVE_FROM_CART' };
+};
+
+export const sortByPrice = () => {
+  return { type: 'SORT_BY_PRICE' };
+};
+export const sortByRating = () => {
+  return { type: 'SORT_BY_RATING' };
 };

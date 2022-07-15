@@ -16,7 +16,7 @@ export default function Header() {
             <Link to="/cart">
               <ShoppingCartIcon />
             </Link>
-            <Link to="/home">
+            <Link to="/">
               <HomeIcon />
             </Link>
           </Toolbar>

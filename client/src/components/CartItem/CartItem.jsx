@@ -1,14 +1,20 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
+
 import './CartItem.scss';
-export default function CartItem({ img, title, description, price }) {
+export default function CartItem({ title, img, description, price, quantity }) {
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch({ type: 'ADD_TO_CART', payload: { title: title } });
+  };
+
+  const removeFromCart = () => {
+    dispatch({ type: 'REMOVE_FROM_CART', payload: { title: title } });
+  };
+
   return (
     <div className="cart-item">
       <div className="description-block">
@@ -18,34 +24,20 @@ export default function CartItem({ img, title, description, price }) {
         </div>
       </div>
       <div className="quantity-block">
-        <button>+</button>
-        <p>2</p>
-        <button>-</button>
+        <AddCircleOutlineRoundedIcon
+          style={{ cursor: 'pointer', marginRight: 10 }}
+          onClick={addToCart}
+        />
+
+        <p>{quantity}</p>
+        <RemoveCircleOutlineRoundedIcon
+          style={{ cursor: 'pointer', marginLeft: 10 }}
+          onClick={removeFromCart}
+        />
       </div>
       <div className="price-block">
-        <p>{price}</p>
+        <p>${price}</p>
       </div>
     </div>
   );
-}
-
-{
-  /* <Card sx={{ maxWidth: 350 }}>
-  <CardMedia component="img" height="300" image={img} alt="green iguana" />
-  <CardContent>
-    <Typography gutterBottom variant="h5" component="div">
-      {title}
-    </Typography>
-    <Typography variant="body2" color="text.secondary">
-      {description}
-    </Typography>
-    <Typography variant="body2" color="text.secondary">
-      {price + ' $'}
-    </Typography>
-  </CardContent>
-  <CardActions className="card-actions">
-    <Button size="small">+1</Button>
-    <Button size="small">-1</Button>
-  </CardActions>
-</Card>; */
 }

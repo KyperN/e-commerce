@@ -5,12 +5,21 @@ const getItems = async (req, res) => {
     const items = await Item.find({});
 
     if (items.length === 0) {
-      res.status(500).send('Cant find items');
+      res.status(500).send({
+        success: false,
+        message: 'No items found',
+      });
     } else {
-      res.status(200).send(items);
+      res.status(200).send({
+        success: true,
+        data: items,
+      });
     }
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send({
+      success: false,
+      message: 'Server error',
+    });
   }
 };
 
@@ -18,16 +27,28 @@ const filterItems = async (req, res) => {
   if (req.query.type === 'all') {
     try {
       const items = await Item.find();
-      res.status(200).send(items);
+      res.status(200).send({
+        success: true,
+        data: items,
+      });
     } catch (e) {
-      res.status(500).send(e.message);
+      res.status(500).send({
+        success: false,
+        message: 'Failed to query',
+      });
     }
   } else {
     try {
       const items = await Item.find(req.query);
-      res.status(200).send(items);
+      res.status(200).send({
+        data: items,
+        success: true,
+      });
     } catch (e) {
-      res.status(500).send(e.message);
+      res.status(500).send({
+        success: false,
+        message: 'Server error',
+      });
     }
   }
 };

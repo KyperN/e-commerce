@@ -22,6 +22,6 @@ app.listen(PORT, () => {
   console.log('serv run');
 });
 
-app.get('/items', itemsController.getItems);
+// app.get('/items', itemsController.getItems);
 
 app.get('/filter-items', itemsController.filterItems);

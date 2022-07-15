@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './Item.scss';
 import { Rating } from '@mui/material';
+import Modal from '../Modal/Modal';
 
 export default function Item({
   title,
@@ -36,7 +37,8 @@ export default function Item({
         <Button onClick={cartHandle} size="small">
           Add to cart
         </Button>
-        <Button size="small">Learn More</Button>
+
+        <Modal img={img} title={title} />
       </CardActions>
     </Card>
   );

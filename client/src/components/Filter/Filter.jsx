@@ -19,8 +19,9 @@ export default function SelectVariants() {
         type: category,
       },
     });
+
     setTimeout(() => {
-      dispatch(loadItems(data));
+      dispatch(loadItems(data.data));
       dispatch(finishLoad());
     }, 800);
   };

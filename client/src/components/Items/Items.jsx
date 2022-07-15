@@ -4,7 +4,8 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import Skeleton from '@mui/material/Skeleton';
 import Item from '../Item/Item';
-import { addToCart, loadItems } from '../../redux/actions/actions';
+import { addToCart } from '../../redux/actions/actions';
+import { Modal } from '@mui/material';
 export default function Items() {
   const dispatch = useDispatch();
 
@@ -14,13 +15,12 @@ export default function Items() {
   const cartHandle = (item) => {
     dispatch(addToCart(item));
   };
-
-  loading ? console.log('im loading') : console.log('fin');
-
   return (
     <div className="content">
       {loading ? (
         <Skeleton animation="wave" variant="circular" width={40} height={40} />
+      ) : items.length === 0 ? (
+        <h1>No items available</h1>
       ) : (
         items.map((item) => {
           return (
@@ -37,6 +37,7 @@ export default function Items() {
           );
         })
       )}
+      <Modal />
     </div>
   );
 }
